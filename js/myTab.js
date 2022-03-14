@@ -13,23 +13,36 @@ MyTab.prototype.init = function(){
 MyTab.prototype.bindingEvent = function(){
 
     this.menu.forEach(function(el, idx){
-
         el.addEventListener('click',function(e){
             e.preventDefault();
-            
-    
+
             const isOn = e.currentTarget.classList.contains('on');
             if(isOn) return;
 
-            active(menu,idx);
-            active(cont,idx);
+            this.active(this.menu,idx);
+            this.active(this.cont,idx);
     
-            new Animate(main,{
+            new Animate(this.main,{
                 prop : 'height',
-                value : matchHT(idx),
-                duration : speed
+                value : this.matchHT(idx),
+                duration : this.speed
             });
         });
     });
-    
+}
+MyTab.prototype.active = function(target, idx){
+    for(let el of target){
+        el.classList.remove('on');
+        target[idx].classList.add('on');
+    }
+}
+MyTab.prototype.matchHT = function(idx){
+    let.ht = getComputedStyle(this.cont[idx]).height;
+    ht = parseInt(ht);
+    return ht;
+}
+MyTab.prototype.speedFun=function(el){
+    let speed = getComputedStyle(el).transitionDuration;
+    speed = parseFloat(speed)*1000;
+    return speed;
 }
