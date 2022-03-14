@@ -16,10 +16,11 @@ MyTab.prototype.bindingEvent = function(){
 
         el.addEventListener('click',function(e){
             e.preventDefault();
+            
     
             const isOn = e.currentTarget.classList.contains('on');
             if(isOn) return;
-            
+
             active(menu,idx);
             active(cont,idx);
     
