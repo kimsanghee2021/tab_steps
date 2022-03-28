@@ -17,7 +17,6 @@ class MyTab{
         
                 const isOn = e.currentTarget.classList.contains('on');
                 if(isOn) return;
-    
                 this.active(this.menu,idx);
                 this.active(this.cont,idx);
         
